@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>编辑</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <h1>编辑</h1>
+        商品名：<input type="text" id="goodsname" value="<%= data.goodsname%>"><br>
+
+        价格：<input type="number" id="price" value="<%=data.sprice %>"><br>
+        <button onclick="save()">保存</button>
+    </body>
+  <script>
+  	function save(){
+  		$.ajax({
+  			url:"/menu/save",
+  			type:"get",
+  			data:{
+  				username:$("#goodsname").val(),
+  				psw:$("#price").val(),
+          id:<%= id%>
+  			},
+  			dataType:"json",
+  			success:function(res){
+  				console.log(res);
+  				if(res.code != 1){
+  					alert(res.message);
+  					return;
+  				}
+  				location.href = "/menu";
+  			}
+  		})
+  	}
+  </script>
+</html>

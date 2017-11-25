@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+
+<script type="text/javascript"> 
+	function isEmail(str){ 
+	var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+	return reg.test(str); 
+	} 
+	var str = 'test@hotmail.com'; 
+	document.write(isEmail(str)+'<br />'); 
+	var str2 = 'test@sima.vip.com'; 
+	document.write(isEmail(str2)+'<br />'); 
+	var str3 = 'te-st@qq.com.cn'; 
+	document.write(isEmail(str3)+'<br />'); 
+	var str4 = 'te_st@sima.vip.com'; 
+	document.write(isEmail(str4)+'<br />'); 
+	var str5 = 'te.._st@sima.vip.com'; 
+	document.write(isEmail(str5)+'<br />'); 
+	</script> 
+</html>

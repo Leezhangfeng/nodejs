@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登陆</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+   	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>登陆</h1>
+    用户名：<input type="text" id="username"><br>
+
+    密码：<input type="password" id="psw"><br>
+    <button onclick="login()">登陆</button>
+
+  </body>
+  <script>
+  	function login(){
+  		$.ajax({
+  			url:"/users/login",
+  			type:"get",
+  			data:{
+  				username:$("#username").val(),
+  				psw:$("#psw").val()
+  			},
+  			dataType:"json",
+  			success:function(res){
+  				console.log(res);
+  				if(res.code != 1){
+  					alert(res.message);
+  					return;
+  				}
+  				location.href = "/menu";
+  			}
+  		})
+  	}
+  </script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>商品</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+   	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <h1>商品录入</h1>
+    商品名：<input type="text" id="goodsname"><br>
+
+    价格：<input type="number" id="psw"><br>
+    图片: <input type="text" id="img_url"><br> 
+
+    <button onclick="goodsaveinfo()">保存</button>
+
+  </body>
+  <script>
+  	function goodsaveinfo(){
+  		$.ajax({
+  			url:"/goods/create",
+  			type:"get",
+  			data:{
+  				username:$("#goodsname").val(),
+  				psw:$("#price").val(),
+          img_url:$('#img_url')
+  			},
+  			dataType:"json",
+  			success:function(res){
+  				console.log(res);
+          
+  				if(res.code != 1){
+  					alert(res.message);
+  					return;
+  				}
+  				location.href = "/menu";
+  			}
+  		})
+  	}
+  </script>
+</html>
